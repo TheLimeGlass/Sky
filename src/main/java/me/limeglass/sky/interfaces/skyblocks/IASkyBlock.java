@@ -5,12 +5,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import com.wasteofplastic.askyblock.ASkyBlockAPI;
 
 import me.limeglass.sky.interfaces.challenges.IASkyBlockChallenge;
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
+import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
+import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 
 public class IASkyBlock implements Skyblock {
 	
@@ -33,6 +37,16 @@ public class IASkyBlock implements Skyblock {
 			challenges.add(new IASkyBlockChallenge(name, times, uuid));
 		}
 		return challenges;
+	}
+	
+	@Override
+	public SkyblockIsland getIslandAt(Location location) {
+		return new IASkyBlockIsland(instance.getIslandAt(location));
+	}
+	
+	@Override
+	public SkyblockIsland getIslandOf(OfflinePlayer player) {
+		return new IASkyBlockIsland(instance.getIslandOwnedBy(player.getUniqueId()));
 	}
 	
 	@Override
