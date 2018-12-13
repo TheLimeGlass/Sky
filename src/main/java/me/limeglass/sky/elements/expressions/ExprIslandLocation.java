@@ -5,12 +5,18 @@ import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
 
 import ch.njol.skript.classes.Changer.ChangeMode;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
 import ch.njol.skript.expressions.base.SimplePropertyExpression;
 import ch.njol.util.coll.CollectionUtils;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 
+@Name("Island Location")
+@Description("Returns the locations of the islands.")
+@Examples("spawn an iron golem above the center location of player's island")
 public class ExprIslandLocation extends SimplePropertyExpression<SkyblockIsland, Location> {
 
 	static {

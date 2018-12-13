@@ -2,9 +2,13 @@ package me.limeglass.sky.elements.expressions;
 
 import org.eclipse.jdt.annotation.Nullable;
 
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Name;
 import ch.njol.skript.expressions.base.SimplePropertyExpression;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 
+@Name("Island Leader Name")
+@Description("Returns the username of the leader.")
 public class ExprIslandLeaderName extends SimplePropertyExpression<SkyblockIsland, String> {
 
 	static {

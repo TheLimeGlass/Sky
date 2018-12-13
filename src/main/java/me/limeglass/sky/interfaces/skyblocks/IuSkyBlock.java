@@ -3,6 +3,7 @@ package me.limeglass.sky.interfaces.skyblocks;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -21,6 +22,16 @@ public class IuSkyBlock implements Skyblock {
 		this.instance = instance;
 	}
 	
+	@SuppressWarnings("deprecation")
+	@Override
+	public Set<SkyblockIsland> getTrustedOn(OfflinePlayer player) {
+		return instance.getPlayerInfo(player.getPlayer()).getTrustedOn().parallelStream()
+				.map(username -> Bukkit.getOfflinePlayer(username))
+				.filter(p -> p != null)
+				.map(p -> getIslandOf(p))
+				.collect(Collectors.toSet());
+	}
+	
 	@Override
 	public Set<SkyblockChallenge> getChallenges(Player player) {
 		return instance.getPlayerInfo(player).getChallenges().parallelStream()
@@ -36,6 +47,11 @@ public class IuSkyBlock implements Skyblock {
 	@Override
 	public SkyblockIsland getIslandOf(OfflinePlayer player) {
 		return new IuSkyBlockIsland(instance.getIslandInfo(player.getPlayer()));
+	}
+	
+	@Override
+	public Location getHomeLocation(OfflinePlayer player) {
+		return instance.getPlayerInfo(player.getPlayer()).getHomeLocation();
 	}
 	
 	@Override

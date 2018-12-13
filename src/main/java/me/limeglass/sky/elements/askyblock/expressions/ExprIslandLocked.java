@@ -4,17 +4,23 @@ import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
 
 import ch.njol.skript.classes.Changer.ChangeMode;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
 import ch.njol.skript.expressions.base.SimplePropertyExpression;
 import ch.njol.util.coll.CollectionUtils;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 
+@Name("Island Locked State")
+@Description({"Returns the islands locked states.", "ASkyBlock exclusive"})
+@Examples("set locked state of player's island to true")
 public class ExprIslandLocked extends SimplePropertyExpression<SkyblockIsland, Boolean> {
 
 	static {
 		if (Sky.getSkyblock().isASkyBlock())
-			register(ExprIslandLocked.class, boolean.class, "[island] locked", "islands");
+			register(ExprIslandLocked.class, boolean.class, "[island] locked [state]", "islands");
 	}
 	
 	@Override

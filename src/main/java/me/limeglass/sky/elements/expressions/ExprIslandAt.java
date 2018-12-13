@@ -8,6 +8,9 @@ import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -17,6 +20,13 @@ import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock;
 
+@Name("Island At Location")
+@Description("Returns the islands found at locations.")
+@Examples({
+		"on break:",
+        "\tif {skyblock::player::%player%::friends::*} doesn't contain owner of island at event-location:",
+        "\t\tcancel the event"
+})
 public class ExprIslandAt extends SimpleExpression<SkyblockIsland> {
 
 	static {

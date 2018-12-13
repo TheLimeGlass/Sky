@@ -9,46 +9,43 @@ import org.eclipse.jdt.annotation.Nullable;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.doc.Description;
-import ch.njol.skript.doc.Examples;
 import ch.njol.skript.doc.Name;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
+import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock;
 
-@Name("Island Members")
-@Description("Returns the members of the islands.")
-@Examples({
-		"loop members of player's island:",
-        "\tif name of loop-offlineplayer is string-argument:",
-        "\t\tteleport string-argument parsed as player to center location of player's island",
-})
-public class ExprIslandMembers extends SimpleExpression<OfflinePlayer> {
+@Name("Player Trusted Islands")
+@Description("Returns all the islands the players are trusted on.")
+public class ExprPlayerTrustedIslands extends SimpleExpression<OfflinePlayer> {
 
 	static {
-		//Usage of this expression is acceptable because of the multiple returns from a single player.
-		Skript.registerExpression(ExprIslandMembers.class, OfflinePlayer.class, ExpressionType.PROPERTY, "[(all [[of] the]|the)] [island] members (from|of) %islands%", "[(all [[of] the]|the)] %islands%'[s] [island] members");
+		Skript.registerExpression(ExprPlayerTrustedIslands.class, OfflinePlayer.class, ExpressionType.PROPERTY, "[(all [[of] the]|the)] trusted islands (from|of) %offlineplayers%", "[(all [[of] the]|the)] %offlineplayers%'[s] trusted islands");
 	}
 	
 	@Nullable
-	private Expression<SkyblockIsland> islands;
+	private Expression<OfflinePlayer> players;
+	private Skyblock skyblock;
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult) {
-		islands = (Expression<SkyblockIsland>) exprs[0];
+		players = (Expression<OfflinePlayer>) exprs[0];
+		skyblock = Sky.getSkyblock();
 		return true;
 	}
 	
 	@Override
 	@Nullable
 	protected OfflinePlayer[] get(Event e) {
-		Set<OfflinePlayer> members = new HashSet<>();
-		for (SkyblockIsland island : islands.getArray(e))
-			members.addAll(island.getMembers());
-		return members.toArray(new OfflinePlayer[members.size()]);
+		Set<SkyblockIsland> islands = new HashSet<>();
+		for (OfflinePlayer player : players.getArray(e))
+			islands.addAll(skyblock.getTrustedOn(player));
+		return islands.toArray(new OfflinePlayer[islands.size()]);
 	}
 	
 	@Override
@@ -63,7 +60,7 @@ public class ExprIslandMembers extends SimpleExpression<OfflinePlayer> {
 	
 	@Override
 	public String toString(@Nullable Event e, boolean debug) {
-		return "Island members of " + islands.toString(e, debug);
+		return "Trusted islands of " + players.toString(e, debug);
 	}
 	
 }

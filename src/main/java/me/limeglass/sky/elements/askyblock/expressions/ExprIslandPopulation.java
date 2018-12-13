@@ -2,11 +2,15 @@ package me.limeglass.sky.elements.askyblock.expressions;
 
 import org.eclipse.jdt.annotation.Nullable;
 
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Name;
 import ch.njol.skript.expressions.base.SimplePropertyExpression;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 
+@Name("Island Population")
+@Description({"Returns the villager population on the islands.", "ASkyBlock exclusive"})
 public class ExprIslandPopulation extends SimplePropertyExpression<SkyblockIsland, Number> {
 
 	static {

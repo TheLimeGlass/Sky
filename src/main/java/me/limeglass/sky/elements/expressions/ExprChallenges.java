@@ -8,6 +8,9 @@ import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -18,11 +21,19 @@ import me.limeglass.sky.interfaces.PlayerResolver;
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock;
 
+@Name("Skyblock Challenges")
+@Description("Returns the challenges of a player.")
+@Examples({
+        "loop skyblock challenges of player:",
+        "\tset {_challenges::%name of loop-challenge%} to completions of loop-challenge",
+        "loop {_challenges::*}:",
+        "\tmessage \"&6%loop-index% was completed %loop-value% times!\""
+})
 public class ExprChallenges extends SimpleExpression<SkyblockChallenge> implements PlayerResolver {
 
 	static {
 		//Usage of this expression is acceptable because of the multiple returns from a single player.
-		Skript.registerExpression(ExprChallenges.class, SkyblockChallenge.class, ExpressionType.PROPERTY, "[(all [[of] the]|the)] [sky[ ]block] challenges (from|of) %players/strings%", "[(all [[of] the]|the)] %players/strings%'[s] [sky[ ]block] challenges");
+		Skript.registerExpression(ExprChallenges.class, SkyblockChallenge.class, ExpressionType.PROPERTY, "[(all [[of] the]|the)] [(island|sky[ ]block)] challenges (from|of) %players/strings%", "[(all [[of] the]|the)] %players/strings%'[s] [(island|sky[ ]block)] challenges");
 	}
 	
 	@Nullable

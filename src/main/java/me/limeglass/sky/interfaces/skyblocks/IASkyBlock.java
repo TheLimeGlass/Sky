@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -22,6 +23,13 @@ public class IASkyBlock implements Skyblock {
 	
 	public IASkyBlock(ASkyBlockAPI instance) {
 		this.instance = instance;
+	}
+	
+	@Override
+	public Set<SkyblockIsland> getTrustedOn(OfflinePlayer player) {
+		return instance.getCoopIslands(player.getPlayer()).parallelStream()
+				.map(location -> getIslandAt(location))
+				.collect(Collectors.toSet());
 	}
 	
 	@Override
@@ -47,6 +55,11 @@ public class IASkyBlock implements Skyblock {
 	@Override
 	public SkyblockIsland getIslandOf(OfflinePlayer player) {
 		return new IASkyBlockIsland(instance.getIslandOwnedBy(player.getUniqueId()));
+	}
+	
+	@Override
+	public Location getHomeLocation(OfflinePlayer player) {
+		return instance.getHomeLocation(player.getUniqueId());
 	}
 	
 	@Override

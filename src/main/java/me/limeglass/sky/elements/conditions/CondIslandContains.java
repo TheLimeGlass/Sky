@@ -5,12 +5,22 @@ import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
 import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 
+@Name("Island Contains")
+@Description("Check if locations are within the islands bounds.")
+@Examples({
+        "while player is within player's island:",
+        "\twait a second",
+        "message \"&6You have left your own island's boundries.\""
+})
 public class CondIslandContains extends Condition {
 
 	static {

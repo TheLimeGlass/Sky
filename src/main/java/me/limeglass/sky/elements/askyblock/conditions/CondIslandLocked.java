@@ -1,10 +1,19 @@
 package me.limeglass.sky.elements.askyblock.conditions;
 
 import ch.njol.skript.conditions.base.PropertyCondition;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 
+@Name("Island Is Locked")
+@Description({"Check if islands are locked.", "ASkyBlock exclusive"})
+@Examples({
+        "if {_island} is locked:",
+        "\tbroadcast \"This island is locked\""
+})
 public class CondIslandLocked extends PropertyCondition<SkyblockIsland> {
 
 	static {

@@ -15,6 +15,12 @@ public interface Skyblock {
 		ASKYBLOCK,
 		USKYBLOCK;
 	}
+	
+	/**
+	 * @param player The player to check all islands on.
+	 * @return The islands the player is trusted on.
+	 */
+	Set<SkyblockIsland> getTrustedOn(OfflinePlayer player);
 
 	/**
 	 * @param uuid The UUID to view the challenges of.
@@ -33,6 +39,12 @@ public interface Skyblock {
 	 * @return The island if one was found.
 	 */
 	SkyblockIsland getIslandOf(OfflinePlayer player);
+	
+	/**
+	 * @param player The player to get the home location from.
+	 * @return The home location the player has set.
+	 */
+	Location getHomeLocation(OfflinePlayer player);
 	
 	/**
 	 * @return Which Skyblock plugin is being ran.

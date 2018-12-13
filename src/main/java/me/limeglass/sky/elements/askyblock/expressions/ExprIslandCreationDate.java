@@ -4,6 +4,9 @@ import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
 
 import ch.njol.skript.classes.Changer.ChangeMode;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
 import ch.njol.skript.expressions.base.SimplePropertyExpression;
 import ch.njol.skript.util.Date;
 import ch.njol.util.coll.CollectionUtils;
@@ -11,6 +14,9 @@ import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 
+@Name("Island Creation Date")
+@Description({"Returns the creation date of the islands.", "ASkyBlock exclusive"})
+@Examples("set {_difference} to the difference between now and creation date of {_island}")
 public class ExprIslandCreationDate extends SimplePropertyExpression<SkyblockIsland, Date> {
 
 	static {
