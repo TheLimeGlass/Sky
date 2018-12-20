@@ -13,6 +13,7 @@ import ch.njol.util.coll.CollectionUtils;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Island Creation Date")
 @Description({"Returns the creation date of the islands.", "ASkyBlock exclusive"})
@@ -20,7 +21,7 @@ import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 public class ExprIslandCreationDate extends SimplePropertyExpression<SkyblockIsland, Date> {
 
 	static {
-		if (Sky.getSkyblock().isASkyBlock())
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.ASKYBLOCK)
 			register(ExprIslandCreationDate.class, Date.class, "[island] creation date", "islands");
 	}
 	

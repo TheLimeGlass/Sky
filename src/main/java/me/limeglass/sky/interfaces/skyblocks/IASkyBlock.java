@@ -72,9 +72,4 @@ public class IASkyBlock implements Skyblock {
 		return instance;
 	}
 	
-	@Override
-	public boolean isASkyBlock() {
-		return true;
-	}
-	
 }

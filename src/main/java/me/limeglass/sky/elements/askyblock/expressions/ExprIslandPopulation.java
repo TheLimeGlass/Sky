@@ -8,13 +8,14 @@ import ch.njol.skript.expressions.base.SimplePropertyExpression;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Island Population")
 @Description({"Returns the villager population on the islands.", "ASkyBlock exclusive"})
 public class ExprIslandPopulation extends SimplePropertyExpression<SkyblockIsland, Number> {
 
 	static {
-		if (Sky.getSkyblock().isASkyBlock())
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.ASKYBLOCK)
 			register(ExprIslandPopulation.class, Number.class, "[island] [villager] population", "islands");
 	}
 	

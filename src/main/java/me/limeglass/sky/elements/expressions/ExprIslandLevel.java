@@ -1,15 +1,10 @@
 package me.limeglass.sky.elements.expressions;
 
-import org.bukkit.OfflinePlayer;
 import org.eclipse.jdt.annotation.Nullable;
-
-import com.wasteofplastic.askyblock.ASkyBlockAPI;
 
 import ch.njol.skript.doc.Description;
 import ch.njol.skript.doc.Name;
 import ch.njol.skript.expressions.base.SimplePropertyExpression;
-import me.limeglass.sky.Sky;
-import me.limeglass.sky.interfaces.islands.IuSkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 
 @Name("Island Level")
@@ -23,10 +18,7 @@ public class ExprIslandLevel extends SimplePropertyExpression<SkyblockIsland, Nu
 	@Override
 	@Nullable
 	public Number convert(SkyblockIsland island) {
-		if (island instanceof IuSkyBlockIsland)
-			return ((IuSkyBlockIsland) island).getIsland().getLevel();
-		OfflinePlayer owner = island.getLeader();
-		return ((ASkyBlockAPI)Sky.getSkyblock().getInstance()).getLongIslandLevel(owner.getUniqueId());
+		return island.getLevel();
 	}
 	
 	@Override

@@ -11,13 +11,14 @@ import ch.njol.util.coll.CollectionUtils;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Island Level Handicap")
 @Description({"Returns the islands handicap level.", "ASkyBlock exclusive"})
 public class ExprIslandHandicap extends SimplePropertyExpression<SkyblockIsland, Number> {
 
 	static {
-		if (Sky.getSkyblock().isASkyBlock())
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.ASKYBLOCK)
 			register(ExprIslandHandicap.class, Number.class, "[island] [level] handicap", "islands");
 	}
 	

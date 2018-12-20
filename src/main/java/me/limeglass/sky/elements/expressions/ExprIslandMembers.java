@@ -16,7 +16,9 @@ import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
+import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Island Members")
 @Description("Returns the members of the islands.")
@@ -28,8 +30,9 @@ import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 public class ExprIslandMembers extends SimpleExpression<OfflinePlayer> {
 
 	static {
-		//Usage of this expression is acceptable because of the multiple returns from a single player.
-		Skript.registerExpression(ExprIslandMembers.class, OfflinePlayer.class, ExpressionType.PROPERTY, "[(all [[of] the]|the)] [island] members (from|of) %islands%", "[(all [[of] the]|the)] %islands%'[s] [island] members");
+		if (Sky.getSkyblock().getPluginType() != SkyblockPlugin.SKYBLOCKEARTH)
+			//Usage of this expression is acceptable because of the multiple returns from a single player.
+			Skript.registerExpression(ExprIslandMembers.class, OfflinePlayer.class, ExpressionType.PROPERTY, "[(all [[of] the]|the)] [island] members (from|of) %islands%", "[(all [[of] the]|the)] %islands%'[s] [island] members");
 	}
 	
 	@Nullable

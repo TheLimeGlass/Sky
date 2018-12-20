@@ -66,10 +66,20 @@ public class IuSkyBlockIsland implements SkyblockIsland {
 			location = island.getIslandLocation();
 		return location;
 	}
+	
+	@Override
+	public String getName() {
+		return island.getName();
+	}
 
 	@Override
 	public Biome getBiome() {
 		return BiomeUtils.parse(island.getBiome());
+	}
+
+	@Override
+	public long getLevel() {
+		return (long) island.getLevel();
 	}
 	
 }

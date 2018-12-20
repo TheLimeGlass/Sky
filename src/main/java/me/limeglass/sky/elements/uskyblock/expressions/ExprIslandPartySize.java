@@ -6,11 +6,12 @@ import ch.njol.skript.expressions.base.SimplePropertyExpression;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IuSkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 public class ExprIslandPartySize extends SimplePropertyExpression<SkyblockIsland, Number> {
 
 	static {
-		if (!Sky.getSkyblock().isASkyBlock())
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.USKYBLOCK)
 			register(ExprIslandPartySize.class, Number.class, "[island] party size", "islands");
 	}
 	

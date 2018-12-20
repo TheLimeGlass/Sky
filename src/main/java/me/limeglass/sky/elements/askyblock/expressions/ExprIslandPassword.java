@@ -12,6 +12,7 @@ import ch.njol.util.coll.CollectionUtils;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Island Password")
 @Description({"Returns the password of the island.", "ASkyBlock exclusive"})
@@ -22,7 +23,7 @@ import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 public class ExprIslandPassword extends SimplePropertyExpression<SkyblockIsland, String> {
 
 	static {
-		if (Sky.getSkyblock().isASkyBlock())
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.ASKYBLOCK)
 			register(ExprIslandPassword.class, String.class, "[island] password", "islands");
 	}
 	

@@ -11,13 +11,14 @@ import ch.njol.util.coll.CollectionUtils;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Island Votes")
 @Description({"Returns the amount of votes for the islands.", "ASkyBlock exclusive"})
 public class ExprIslandVotes extends SimplePropertyExpression<SkyblockIsland, Number> {
 
 	static {
-		if (Sky.getSkyblock().isASkyBlock())
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.ASKYBLOCK)
 			register(ExprIslandVotes.class, Number.class, "[island] votes", "islands");
 	}
 	

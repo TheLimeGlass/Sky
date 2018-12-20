@@ -20,6 +20,7 @@ import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.PlayerResolver;
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Skyblock Challenges")
 @Description("Returns the challenges of a player.")
@@ -32,8 +33,9 @@ import me.limeglass.sky.interfaces.skyblocks.Skyblock;
 public class ExprChallenges extends SimpleExpression<SkyblockChallenge> implements PlayerResolver {
 
 	static {
-		//Usage of this expression is acceptable because of the multiple returns from a single player.
-		Skript.registerExpression(ExprChallenges.class, SkyblockChallenge.class, ExpressionType.PROPERTY, "[(all [[of] the]|the)] [(island|sky[ ]block)] challenges (from|of) %players/strings%", "[(all [[of] the]|the)] %players/strings%'[s] [(island|sky[ ]block)] challenges");
+		if (Sky.getSkyblock().getPluginType() != SkyblockPlugin.SKYBLOCKEARTH)
+			//Usage of this expression is acceptable because of the multiple returns from a single player.
+			Skript.registerExpression(ExprChallenges.class, SkyblockChallenge.class, ExpressionType.PROPERTY, "[(all [[of] the]|the)] [(island|sky[ ]block)] challenges (from|of) %players/strings%", "[(all [[of] the]|the)] %players/strings%'[s] [(island|sky[ ]block)] challenges");
 	}
 	
 	@Nullable

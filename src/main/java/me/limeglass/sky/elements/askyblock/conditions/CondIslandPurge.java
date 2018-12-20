@@ -7,6 +7,7 @@ import ch.njol.skript.doc.Name;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Island Purge Protection")
 @Description({"Check if islands have purge protection.", "ASkyBlock exclusive"})
@@ -17,7 +18,7 @@ import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 public class CondIslandPurge extends PropertyCondition<SkyblockIsland> {
 
 	static {
-		if (Sky.getSkyblock().isASkyBlock())
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.ASKYBLOCK)
 			register(CondIslandPurge.class, "purge protected", "islands");
 	}
 	

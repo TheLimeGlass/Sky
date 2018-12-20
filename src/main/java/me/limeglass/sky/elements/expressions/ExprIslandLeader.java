@@ -12,6 +12,7 @@ import ch.njol.util.coll.CollectionUtils;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Island Leader")
 @Description("Returns the leader of the islands.")
@@ -40,7 +41,7 @@ public class ExprIslandLeader extends SimplePropertyExpression<SkyblockIsland, O
 	@Override
 	@Nullable
 	public Class<?>[] acceptChange(ChangeMode mode) {
-		if (mode == ChangeMode.SET && Sky.getSkyblock().isASkyBlock())
+		if (mode == ChangeMode.SET && Sky.getSkyblock().getPluginType() == SkyblockPlugin.ASKYBLOCK)
 			return CollectionUtils.array(OfflinePlayer.class);
 		return null;
 	}

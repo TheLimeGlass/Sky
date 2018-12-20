@@ -13,6 +13,7 @@ import ch.njol.util.coll.CollectionUtils;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Island Spawnpoint")
 @Description("Returns the spawnpoints of the islands.")
@@ -42,7 +43,7 @@ public class ExprIslandSpawnPoint extends SimplePropertyExpression<SkyblockIslan
 	@Override
 	@Nullable
 	public Class<?>[] acceptChange(ChangeMode mode) {
-		if (mode == ChangeMode.SET && Sky.getSkyblock().isASkyBlock())
+		if (mode == ChangeMode.SET && Sky.getSkyblock().getPluginType() == SkyblockPlugin.ASKYBLOCK)
 			return CollectionUtils.array(Location.class);
 		return null;
 	}

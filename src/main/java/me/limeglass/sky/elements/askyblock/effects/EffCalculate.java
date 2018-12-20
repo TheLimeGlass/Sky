@@ -16,6 +16,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.PlayerResolver;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Island Calculate")
 @Description({"Calculates the islands' levels.", "ASkyBlock exclusive"})
@@ -23,7 +24,7 @@ import me.limeglass.sky.interfaces.PlayerResolver;
 public class EffCalculate extends Effect implements PlayerResolver {
 
 	static {
-		if (Sky.getSkyblock().isASkyBlock())
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.ASKYBLOCK)
 			Skript.registerEffect(EffCalculate.class, "[re]calculate island[s] (for|of) %players/strings%");
 	}
 	

@@ -18,11 +18,12 @@ import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.PlayerResolver;
 import me.limeglass.sky.interfaces.islands.IuSkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 public class ExprIslandBanned extends SimpleExpression<OfflinePlayer> implements PlayerResolver {
 
 	static {
-		if (!Sky.getSkyblock().isASkyBlock())
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.USKYBLOCK)
 			Skript.registerExpression(ExprIslandBanned.class, OfflinePlayer.class, ExpressionType.PROPERTY, "[(all [[of] the]|the)] [island] banned members (from|of) %islands%", "[(all [[of] the]|the)] %islands%'[s] [island] banned members");
 	}
 	

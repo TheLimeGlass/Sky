@@ -15,11 +15,12 @@ import ch.njol.util.Kleenean;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IuSkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 public class ExprIslandLog extends SimpleExpression<String> {
 
 	static {
-		if (!Sky.getSkyblock().isASkyBlock())
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.USKYBLOCK)
 			Skript.registerExpression(ExprIslandLog.class, String.class, ExpressionType.PROPERTY, "[the] log (from|of) %islands%");
 	}
 	

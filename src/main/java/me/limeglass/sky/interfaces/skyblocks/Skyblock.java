@@ -13,7 +13,8 @@ public interface Skyblock {
 	
 	public enum SkyblockPlugin {
 		ASKYBLOCK,
-		USKYBLOCK;
+		USKYBLOCK,
+		SKYBLOCKEARTH;
 	}
 	
 	/**
@@ -50,11 +51,6 @@ public interface Skyblock {
 	 * @return Which Skyblock plugin is being ran.
 	 */
 	SkyblockPlugin getPluginType();
-	
-	/**
-	 * @return If the current Skyblock plugin is ASkyBlock or uSkyBlock.
-	 */
-	boolean isASkyBlock();
 	
 	/**
 	 * @return The static implementation class used by the Skyblock plugin.

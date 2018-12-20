@@ -46,8 +46,18 @@ public interface SkyblockIsland {
 	String getLeaderName();
 	
 	/**
+	 * @return The name of the island.
+	 */
+	String getName();
+	
+	/**
 	 * @return Biome of the island.
 	 */
 	Biome getBiome();
+	
+	/**
+	 * @return The level of the island
+	 */
+	long getLevel();
 	
 }

@@ -1,7 +1,7 @@
 package me.limeglass.sky;
 
 import java.io.IOException;
-
+import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -10,7 +10,9 @@ import com.wasteofplastic.askyblock.ASkyBlockAPI;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
+import me.goodandevil.skyblock.api.SkyBlockAPI;
 import me.limeglass.sky.interfaces.skyblocks.IASkyBlock;
+import me.limeglass.sky.interfaces.skyblocks.ISkyBlockEarth;
 import me.limeglass.sky.interfaces.skyblocks.IuSkyBlock;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock;
 import us.talabrek.ultimateskyblock.api.uSkyBlockAPI;
@@ -31,12 +33,32 @@ public class Sky extends JavaPlugin {
 			plugin = Bukkit.getPluginManager().getPlugin("ASkyBlock");
 			if (plugin != null && plugin.isEnabled()) {
 				skyblock = new IASkyBlock(ASkyBlockAPI.getInstance());
+			} else {
+				//Since the name is just SkyBlock...
+				//We need a check to make sure another plugin doesn't have same name.
+				plugin = Bukkit.getPluginManager().getPlugin("SkyBlock");
+				boolean check = false;
+				if (plugin != null && plugin.isEnabled()) {
+					check = true;
+				} else {
+					//In-case they decide to actually change the name.
+					plugin = Bukkit.getPluginManager().getPlugin("SkyBlockEarth");
+					if (plugin != null && plugin.isEnabled()) {
+						check = true;
+					}
+				}
+				if (check) {
+					List<String> authors = plugin.getDescription().getAuthors();
+					if (authors.contains("GoodAndEvil") || authors.contains("Songoda")) {
+						skyblock = new ISkyBlockEarth(SkyBlockAPI.getImplementation());
+					}
+				}
 			}
 		}
 		try {
 			addon = Skript.registerAddon(this).loadClasses(packageName, "elements");
 		} catch (IOException e) {
-			e.printStackTrace();
+			Skript.exception(e, "Could not load Sky's syntax elements");
 		}
 		getLogger().info("has been enabled!");
 	}

@@ -6,11 +6,12 @@ import ch.njol.skript.expressions.base.SimplePropertyExpression;
 import ch.njol.skript.util.Timespan;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 public class ExprChallengeCooldown extends SimplePropertyExpression<SkyblockChallenge, Timespan> {
 
 	static {
-		if (!Sky.getSkyblock().isASkyBlock())
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.USKYBLOCK)
 			register(ExprChallengeCooldown.class, Timespan.class, "[challenge] cooldown [time]", "challenges");
 	}
 	

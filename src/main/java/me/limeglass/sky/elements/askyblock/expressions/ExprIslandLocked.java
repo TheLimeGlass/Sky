@@ -12,6 +12,7 @@ import ch.njol.util.coll.CollectionUtils;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
+import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Island Locked State")
 @Description({"Returns the islands locked states.", "ASkyBlock exclusive"})
@@ -19,7 +20,7 @@ import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 public class ExprIslandLocked extends SimplePropertyExpression<SkyblockIsland, Boolean> {
 
 	static {
-		if (Sky.getSkyblock().isASkyBlock())
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.ASKYBLOCK)
 			register(ExprIslandLocked.class, boolean.class, "[island] locked [state]", "islands");
 	}
 	
