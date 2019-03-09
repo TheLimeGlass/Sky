@@ -28,12 +28,12 @@ public class ISkyBlockEarthIsland implements SkyblockIsland {
 
 	@Override
 	public boolean isWithinIsland(Location location) {
-		return SkyBlockAPI.isLocationAtIsland(island, location);
+		return SkyBlockAPI.getIslandManager().isLocationAtIsland(island, location);
 	}
 	
 	@Override
 	public List<Player> getOnlineMembers() {
-		return SkyBlockAPI.getMembersOnline(island).stream()
+		return SkyBlockAPI.getIslandManager().getMembersOnline(island).stream()
 				.map(uuid -> Bukkit.getPlayer(uuid))
 				.collect(Collectors.toList());
 	}

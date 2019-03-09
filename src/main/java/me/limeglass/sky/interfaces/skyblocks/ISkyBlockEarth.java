@@ -26,7 +26,7 @@ public class ISkyBlockEarth implements Skyblock {
 		Set<SkyblockIsland> islands = new HashSet<>();
 		for (Island island : instance.getIslandManager().getIslands().values()) {
 			if (island.getCoopPlayers().contains(player.getUniqueId())) {
-				islands.add(new ISkyBlockEarthIsland(new me.goodandevil.skyblock.api.island.Island(island)));
+				islands.add(new ISkyBlockEarthIsland(new me.goodandevil.skyblock.api.island.Island(island, player)));
 			}
 		}
 		return islands;
@@ -39,12 +39,12 @@ public class ISkyBlockEarth implements Skyblock {
 	
 	@Override
 	public SkyblockIsland getIslandAt(Location location) {
-		return new ISkyBlockEarthIsland(SkyBlockAPI.getIslandAtLocation(location));
+		return new ISkyBlockEarthIsland(SkyBlockAPI.getIslandManager().getIslandAtLocation(location));
 	}
 	
 	@Override
 	public SkyblockIsland getIslandOf(OfflinePlayer player) {
-		return new ISkyBlockEarthIsland(SkyBlockAPI.getIsland(player.getPlayer()));
+		return new ISkyBlockEarthIsland(SkyBlockAPI.getIslandManager().getIsland(player.getPlayer()));
 	}
 	
 	@Override

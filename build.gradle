@@ -18,7 +18,7 @@ repositories {
 	
 	//SkyBlockEarth
 	maven {
-		url 'https://hub.spaceio.xyz/repository/maven-snapshots/'
+		url 'http://repo.songoda.com/artifactory/private/'
 	}
 	
 	//Jitpack
@@ -37,7 +37,7 @@ dependencies {
 	implementation (group: 'org.spigotmc', name: 'spigot-api', version: '1.13.2-R0.1-SNAPSHOT')
 	
 	//SkyBlockEarth
-	implementation (group: 'me.goodandevil', name: 'skyblockearth', version: '54-SNAPSHOT')
+	implementation (group: 'com.songoda', name: 'skyblockearth', version: '59')
 	
 	//Skript
 	implementation (group: 'com.github.SkriptLang', name: 'Skript', version: '2.3-beta4') {
