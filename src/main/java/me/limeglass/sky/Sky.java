@@ -34,15 +34,12 @@ public class Sky extends JavaPlugin {
 			if (plugin != null && plugin.isEnabled()) {
 				skyblock = new IASkyBlock(ASkyBlockAPI.getInstance());
 			} else {
-				//Since the name is just SkyBlock...
-				//We need a check to make sure another plugin doesn't have same name.
-				plugin = Bukkit.getPluginManager().getPlugin("SkyBlock");
+				plugin = Bukkit.getPluginManager().getPlugin("FabledSkyBlock");
 				boolean check = false;
 				if (plugin != null && plugin.isEnabled()) {
 					check = true;
 				} else {
-					//In-case they decide to actually change the name.
-					plugin = Bukkit.getPluginManager().getPlugin("SkyBlockEarth");
+					plugin = Bukkit.getPluginManager().getPlugin("SkyBlock");
 					if (plugin != null && plugin.isEnabled()) {
 						check = true;
 					}
@@ -54,6 +51,11 @@ public class Sky extends JavaPlugin {
 					}
 				}
 			}
+		}
+		if (skyblock == null) {
+			getLogger().info("No Skyblock plugin was found, disabling...");
+			setEnabled(false);
+			return;
 		}
 		try {
 			addon = Skript.registerAddon(this).loadClasses(packageName, "elements");

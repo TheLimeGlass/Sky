@@ -1,3 +1,4 @@
+import org.apache.tools.ant.filters.ReplaceTokens
 apply plugin: 'java-library'
 apply plugin: 'eclipse'
 
@@ -15,15 +16,16 @@ repositories {
 		url "https://oss.sonatype.org/content/repositories/snapshots/"
 	}
 	
+	//SkyBlockEarth
+	maven {
+		url 'https://hub.spaceio.xyz/repository/maven-snapshots/'
+	}
+	
 	//Jitpack
 	maven {
 		url 'https://jitpack.io'
 	}
 	
-	//SkyBlockEarth
-	maven {
-		url 'https://hub.spaceio.xyz/repository/maven-snapshots/'
-	}
 }
 
 dependencies {
@@ -47,6 +49,7 @@ dependencies {
 }
 
 processResources {
+	filter ReplaceTokens, tokens: ["version": project.property("version")]
 	from (sourceSets.main.resources.srcDirs) {
 		include '**/*.yml'
 	}
