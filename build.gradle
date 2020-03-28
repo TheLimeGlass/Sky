@@ -1,30 +1,26 @@
+import org.apache.tools.ant.filters.ReplaceTokens
 apply plugin: 'java-library'
 apply plugin: 'eclipse'
 
 repositories {
 	mavenCentral()
 	jcenter()
-	
+
 	//Spigot
 	maven {
 		url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
 	}
-	
+
 	//Bungeecord
 	maven {
 		url "https://oss.sonatype.org/content/repositories/snapshots/"
 	}
-	
-	//SkyBlockEarth
-	maven {
-		url 'http://repo.songoda.com/artifactory/private/'
-	}
-	
+
 	//Jitpack
 	maven {
 		url 'https://jitpack.io'
 	}
-	
+
 }
 
 dependencies {
@@ -33,10 +29,7 @@ dependencies {
 	implementation (group: 'org.eclipse.jdt', name: 'org.eclipse.jdt.annotation', version: '1.1.0')
 	
 	//Spigot/Bukkit
-	implementation (group: 'org.spigotmc', name: 'spigot-api', version: '1.13.2-R0.1-SNAPSHOT')
-	
-	//SkyBlockEarth
-	implementation (group: 'com.songoda', name: 'skyblockearth', version: '59')
+	implementation (group: 'org.spigotmc', name: 'spigot-api', version: '1.15.2-R0.1-SNAPSHOT')
 	
 	//Skript
 	implementation (group: 'com.github.SkriptLang', name: 'Skript', version: '2.3-beta4') {

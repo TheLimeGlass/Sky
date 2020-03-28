@@ -9,10 +9,10 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
-import me.goodandevil.skyblock.api.SkyBlockAPI;
-import me.goodandevil.skyblock.api.island.Island;
-import me.goodandevil.skyblock.api.island.IslandEnvironment;
-import me.goodandevil.skyblock.api.island.IslandWorld;
+import com.songoda.skyblock.api.SkyBlockAPI;
+import com.songoda.skyblock.api.island.Island;
+import com.songoda.skyblock.api.island.IslandEnvironment;
+import com.songoda.skyblock.api.island.IslandWorld;
 
 public class ISkyBlockEarthIsland implements SkyblockIsland {
 

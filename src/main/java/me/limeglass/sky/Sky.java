@@ -6,11 +6,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.songoda.skyblock.api.SkyBlockAPI;
 import com.wasteofplastic.askyblock.ASkyBlockAPI;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
-import me.goodandevil.skyblock.api.SkyBlockAPI;
 import me.limeglass.sky.interfaces.skyblocks.IASkyBlock;
 import me.limeglass.sky.interfaces.skyblocks.ISkyBlockEarth;
 import me.limeglass.sky.interfaces.skyblocks.IuSkyBlock;

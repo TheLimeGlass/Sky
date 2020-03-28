@@ -1,14 +1,16 @@
 package me.limeglass.sky.interfaces.skyblocks;
 
 import java.util.HashSet;
+
 import java.util.Set;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
-import me.goodandevil.skyblock.SkyBlock;
-import me.goodandevil.skyblock.api.SkyBlockAPI;
-import me.goodandevil.skyblock.island.Island;
+import com.songoda.skyblock.SkyBlock;
+import com.songoda.skyblock.api.SkyBlockAPI;
+import com.songoda.skyblock.island.Island;
+
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
 import me.limeglass.sky.interfaces.islands.ISkyBlockEarthIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
@@ -25,8 +27,8 @@ public class ISkyBlockEarth implements Skyblock {
 	public Set<SkyblockIsland> getTrustedOn(OfflinePlayer player) {
 		Set<SkyblockIsland> islands = new HashSet<>();
 		for (Island island : instance.getIslandManager().getIslands().values()) {
-			if (island.getCoopPlayers().contains(player.getUniqueId())) {
-				islands.add(new ISkyBlockEarthIsland(new me.goodandevil.skyblock.api.island.Island(island, player)));
+			if (island.getCoopPlayers().keySet().contains(player.getUniqueId())) {
+				islands.add(new ISkyBlockEarthIsland(new com.songoda.skyblock.api.island.Island(island, player)));
 			}
 		}
 		return islands;
