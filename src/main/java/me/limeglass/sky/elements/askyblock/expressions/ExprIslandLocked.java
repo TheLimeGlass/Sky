@@ -32,7 +32,7 @@ public class ExprIslandLocked extends SimplePropertyExpression<SkyblockIsland, B
 	
 	@Override
 	public Class<? extends Boolean> getReturnType() {
-		return boolean.class;
+		return Boolean.class;
 	}
 	
 	@Override
