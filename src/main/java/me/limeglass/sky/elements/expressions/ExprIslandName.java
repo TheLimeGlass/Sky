@@ -5,17 +5,14 @@ import org.eclipse.jdt.annotation.Nullable;
 import ch.njol.skript.doc.Description;
 import ch.njol.skript.doc.Name;
 import ch.njol.skript.expressions.base.SimplePropertyExpression;
-import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
-import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Island Name")
 @Description("Returns the names of the islands.")
 public class ExprIslandName extends SimplePropertyExpression<SkyblockIsland, String> {
 
 	static {
-		if (Sky.getSkyblock().getPluginType() != SkyblockPlugin.SKYBLOCKEARTH)
-			register(ExprIslandName.class, String.class, "[island] name", "islands");
+		register(ExprIslandName.class, String.class, "[island] name", "islands");
 	}
 	
 	@Override

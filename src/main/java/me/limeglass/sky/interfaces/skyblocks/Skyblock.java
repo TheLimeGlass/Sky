@@ -13,8 +13,7 @@ public interface Skyblock {
 	
 	public enum SkyblockPlugin {
 		ASKYBLOCK,
-		USKYBLOCK,
-		SKYBLOCKEARTH;
+		USKYBLOCK;
 	}
 	
 	/**

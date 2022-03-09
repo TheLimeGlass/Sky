@@ -66,11 +66,6 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Sean Grover/OneDrive/Projects/workspace/Sky/lib/FabledSkyblock-2.1.2.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value="main,test"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Sean Grover/OneDrive/Projects/workspace/Sky/lib/uSkyBlock-API-2.7.4.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>

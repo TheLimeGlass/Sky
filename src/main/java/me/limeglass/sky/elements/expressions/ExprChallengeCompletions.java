@@ -6,9 +6,7 @@ import ch.njol.skript.doc.Description;
 import ch.njol.skript.doc.Examples;
 import ch.njol.skript.doc.Name;
 import ch.njol.skript.expressions.base.SimplePropertyExpression;
-import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
-import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
 @Name("Challenge Completions")
 @Description("Returns the amount of completions a challenge has been done.")
@@ -21,8 +19,7 @@ import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 public class ExprChallengeCompletions extends SimplePropertyExpression<SkyblockChallenge, Number> {
 
 	static {
-		if (Sky.getSkyblock().getPluginType() != SkyblockPlugin.SKYBLOCKEARTH)
-			register(ExprChallengeCompletions.class, Number.class, "[challenge] completions", "challenges");
+		register(ExprChallengeCompletions.class, Number.class, "[challenge] completions", "challenges");
 	}
 	
 	@Override
