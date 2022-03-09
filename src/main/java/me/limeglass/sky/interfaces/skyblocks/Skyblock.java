@@ -1,6 +1,6 @@
 package me.limeglass.sky.interfaces.skyblocks;
 
-import java.util.Set;
+import java.util.Collection;
 
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -13,20 +13,21 @@ public interface Skyblock {
 	
 	public enum SkyblockPlugin {
 		ASKYBLOCK,
-		USKYBLOCK;
+		USKYBLOCK,
+		BENTOBOX;
 	}
 	
 	/**
 	 * @param player The player to check all islands on.
 	 * @return The islands the player is trusted on.
 	 */
-	Set<SkyblockIsland> getTrustedOn(OfflinePlayer player);
+	Collection<SkyblockIsland> getTrustedOn(OfflinePlayer player);
 
 	/**
 	 * @param uuid The UUID to view the challenges of.
 	 * @return The challenges of the UUID.
 	 */
-	Set<SkyblockChallenge> getChallenges(Player player);
+	Collection<SkyblockChallenge> getChallenges(Player player);
 	
 	/**
 	 * @param location The location to check around for a island at.
@@ -42,9 +43,9 @@ public interface Skyblock {
 	
 	/**
 	 * @param player The player to get the home location from.
-	 * @return The home location the player has set.
+	 * @return The home locations the player has set.
 	 */
-	Location getHomeLocation(OfflinePlayer player);
+	Collection<Location> getHomeLocations(OfflinePlayer player);
 	
 	/**
 	 * @return Which Skyblock plugin is being ran.

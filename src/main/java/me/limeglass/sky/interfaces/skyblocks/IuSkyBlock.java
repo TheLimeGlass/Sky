@@ -8,6 +8,8 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
+import com.google.common.collect.Sets;
+
 import me.limeglass.sky.interfaces.challenges.IuSkyBlockChallenge;
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
 import me.limeglass.sky.interfaces.islands.IuSkyBlockIsland;
@@ -50,8 +52,8 @@ public class IuSkyBlock implements Skyblock {
 	}
 	
 	@Override
-	public Location getHomeLocation(OfflinePlayer player) {
-		return instance.getPlayerInfo(player.getPlayer()).getHomeLocation();
+	public Set<Location> getHomeLocations(OfflinePlayer player) {
+		return Sets.newHashSet(instance.getPlayerInfo(player.getPlayer()).getHomeLocation());
 	}
 	
 	@Override

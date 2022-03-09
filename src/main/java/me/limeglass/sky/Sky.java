@@ -11,9 +11,11 @@ import com.wasteofplastic.askyblock.ASkyBlockAPI;
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
 import me.limeglass.sky.interfaces.skyblocks.IASkyBlock;
+import me.limeglass.sky.interfaces.skyblocks.IBentoBox;
 import me.limeglass.sky.interfaces.skyblocks.IuSkyBlock;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock;
 import us.talabrek.ultimateskyblock.api.uSkyBlockAPI;
+import world.bentobox.bentobox.BentoBox;
 
 public class Sky extends JavaPlugin {
 	
@@ -31,6 +33,11 @@ public class Sky extends JavaPlugin {
 			plugin = Bukkit.getPluginManager().getPlugin("ASkyBlock");
 			if (plugin != null && plugin.isEnabled()) {
 				skyblock = new IASkyBlock(ASkyBlockAPI.getInstance());
+			} else {
+				plugin = Bukkit.getPluginManager().getPlugin("BentoBox");
+				if (plugin != null && plugin.isEnabled()) {
+					skyblock = new IBentoBox(BentoBox.getInstance());
+				}
 			}
 		}
 		if (skyblock == null) {
@@ -45,7 +52,7 @@ public class Sky extends JavaPlugin {
 		}
 		getLogger().info("has been enabled!");
 	}
-	
+
 	public static Skyblock getSkyblock() {
 		return skyblock;
 	}

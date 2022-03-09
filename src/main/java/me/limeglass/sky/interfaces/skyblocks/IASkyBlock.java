@@ -10,6 +10,7 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
+import com.google.common.collect.Sets;
 import com.wasteofplastic.askyblock.ASkyBlockAPI;
 
 import me.limeglass.sky.interfaces.challenges.IASkyBlockChallenge;
@@ -58,8 +59,8 @@ public class IASkyBlock implements Skyblock {
 	}
 	
 	@Override
-	public Location getHomeLocation(OfflinePlayer player) {
-		return instance.getHomeLocation(player.getUniqueId());
+	public Set<Location> getHomeLocations(OfflinePlayer player) {
+		return Sets.newHashSet(instance.getHomeLocation(player.getUniqueId()));
 	}
 	
 	@Override

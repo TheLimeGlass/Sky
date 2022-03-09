@@ -1,7 +1,6 @@
 package me.limeglass.sky.interfaces.islands;
 
-import java.util.List;
-import java.util.Set;
+import java.util.Collection;
 
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -18,12 +17,12 @@ public interface SkyblockIsland {
 	/**
 	 * @return The members of the island.
 	 */
-	Set<OfflinePlayer> getMembers();
+	Collection<OfflinePlayer> getMembers();
 	
 	/**
 	 * @return The online members of the island.
 	 */
-	List<Player> getOnlineMembers();
+	Collection<Player> getOnlineMembers();
 	
 	/**
 	 * @return The center location of the island.
