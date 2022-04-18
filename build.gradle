@@ -49,7 +49,7 @@ dependencies {
 	implementation (group: 'com.github.rlf', name: 'uSkyBlock-API', version: '3.0.0-SNAPSHOT')
 
 	// BentoBox
-	implementation (group: 'world.bentobox', name: 'bentobox', version: '1.20.1-SNAPSHOT')
+	implementation (group: 'world.bentobox', name: 'bentobox', version: '1.20.1')
 	implementation (group: 'world.bentobox', name: 'challenges', version: '1.0.0-SNAPSHOT')
 
 	implementation fileTree(dir: 'lib', include: '*.jar')
