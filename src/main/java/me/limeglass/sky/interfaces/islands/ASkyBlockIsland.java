@@ -15,11 +15,11 @@ import com.wasteofplastic.askyblock.Island;
 
 import me.limeglass.sky.Sky;
 
-public class IASkyBlockIsland implements SkyblockIsland {
+public class ASkyBlockIsland implements SkyblockIsland {
 
 	private Island island;
 	
-	public IASkyBlockIsland(Island island) {
+	public ASkyBlockIsland(Island island) {
 		this.island = island;
 	}
 

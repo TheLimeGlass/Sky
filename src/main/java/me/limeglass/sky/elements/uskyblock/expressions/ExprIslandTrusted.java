@@ -16,7 +16,7 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.PlayerResolver;
-import me.limeglass.sky.interfaces.islands.IuSkyBlockIsland;
+import me.limeglass.sky.interfaces.islands.uSkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
@@ -43,7 +43,7 @@ public class ExprIslandTrusted extends SimpleExpression<OfflinePlayer> implement
 		Set<OfflinePlayer> trustees = new HashSet<>();
 		for (SkyblockIsland island : islands.getArray(e)) {
 			@SuppressWarnings("deprecation")
-			List<String> trusted = ((IuSkyBlockIsland) island).getIsland().getTrustees();
+			List<String> trusted = ((uSkyBlockIsland) island).getIsland().getTrustees();
 			for (OfflinePlayer player : resolveOffline(trusted.toArray(new String[trusted.size()])))
 				trustees.add(player);
 		}

@@ -4,7 +4,7 @@ import org.eclipse.jdt.annotation.Nullable;
 
 import ch.njol.skript.expressions.base.SimplePropertyExpression;
 import me.limeglass.sky.Sky;
-import me.limeglass.sky.interfaces.islands.IuSkyBlockIsland;
+import me.limeglass.sky.interfaces.islands.uSkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
@@ -18,7 +18,7 @@ public class ExprIslandMaxGolems extends SimplePropertyExpression<SkyblockIsland
 	@Override
 	@Nullable
 	public Number convert(SkyblockIsland island) {
-		return ((IuSkyBlockIsland) island).getIsland().getMaxGolems();
+		return ((uSkyBlockIsland) island).getIsland().getMaxGolems();
 	}
 	
 	@Override

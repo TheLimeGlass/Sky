@@ -1,6 +1,6 @@
 name: Sky
 author: LimeGlass
-description: A Skyblock Skript Addon, supports uSkyblock, ASkyblock and SkyBlockEarth.
+description: A Skyblock Skript Addon, supports uSkyblock, ASkyblock and BentoBox.
 version: @version@
 main: me.limeglass.sky.Sky
-softdepend: [uSkyblock, ASkyblock, FabledSkyBlock, SkyBlock]
+softdepend: [uSkyblock, ASkyblock, SkyBlock, BentoBox]

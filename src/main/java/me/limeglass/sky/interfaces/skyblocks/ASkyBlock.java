@@ -13,16 +13,16 @@ import org.bukkit.entity.Player;
 import com.google.common.collect.Sets;
 import com.wasteofplastic.askyblock.ASkyBlockAPI;
 
-import me.limeglass.sky.interfaces.challenges.IASkyBlockChallenge;
+import me.limeglass.sky.interfaces.challenges.ASkyBlockChallenge;
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
-import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
+import me.limeglass.sky.interfaces.islands.ASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 
-public class IASkyBlock implements Skyblock {
+public class ASkyBlock implements Skyblock {
 	
 	private ASkyBlockAPI instance;
 	
-	public IASkyBlock(ASkyBlockAPI instance) {
+	public ASkyBlock(ASkyBlockAPI instance) {
 		this.instance = instance;
 	}
 	
@@ -43,19 +43,19 @@ public class IASkyBlock implements Skyblock {
 			int times = 0;
 			if (completions.containsKey(name))
 				times = completions.get(name);
-			challenges.add(new IASkyBlockChallenge(name, times, uuid));
+			challenges.add(new ASkyBlockChallenge(name, times, uuid));
 		}
 		return challenges;
 	}
 	
 	@Override
 	public SkyblockIsland getIslandAt(Location location) {
-		return new IASkyBlockIsland(instance.getIslandAt(location));
+		return new ASkyBlockIsland(instance.getIslandAt(location));
 	}
 	
 	@Override
 	public SkyblockIsland getIslandOf(OfflinePlayer player) {
-		return new IASkyBlockIsland(instance.getIslandOwnedBy(player.getUniqueId()));
+		return new ASkyBlockIsland(instance.getIslandOwnedBy(player.getUniqueId()));
 	}
 	
 	@Override

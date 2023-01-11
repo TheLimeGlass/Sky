@@ -21,17 +21,17 @@ import me.limeglass.sky.interfaces.islands.SkyblockIsland;
         "\twait a second",
         "message \"&6You have left your own island's boundries.\""
 })
-public class CondIslandContains extends Condition {
+public class CondWithinIsland extends Condition {
 
 	static {
-		Skript.registerCondition(CondIslandContains.class, "%locations% (is|are) (within|on) %islands%", "%locations% (isn't|is not|aren't|are not) (within|on) %islands%");
+		Skript.registerCondition(CondWithinIsland.class, "%locations% (is|are) (within|on) %islands%", "%locations% (isn't|is not|aren't|are not) (within|on) %islands%");
 	}
-	
+
 	private Expression<SkyblockIsland> islands;
 	private Expression<Location> locations;
 
-	@SuppressWarnings("unchecked")
 	@Override
+	@SuppressWarnings("unchecked")
 	public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult) {
 		locations = (Expression<Location>) exprs[0];
 		islands = (Expression<SkyblockIsland>) exprs[1];
@@ -40,13 +40,13 @@ public class CondIslandContains extends Condition {
 	}
 
 	@Override
-	public boolean check(Event e) {
-		return locations.check(e, location -> islands.check(e, island -> island.isWithinIsland(location)), isNegated());
+	public boolean check(Event event) {
+		return locations.check(event, location -> islands.check(event, island -> island.isWithinIsland(location)), isNegated());
 	}
-	
+
 	@Override
-	public String toString(@Nullable Event e, boolean debug) {
-		return "Locations " + locations.toString(e, debug) + " within islands " + islands.toString(e, debug);
+	public String toString(@Nullable Event event, boolean debug) {
+		return "locations " + locations.toString(event, debug) + " within islands " + islands.toString(event, debug);
 	}
 
 }

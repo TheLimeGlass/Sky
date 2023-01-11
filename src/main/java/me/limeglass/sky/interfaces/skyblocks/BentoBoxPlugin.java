@@ -10,9 +10,9 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
-import me.limeglass.sky.interfaces.challenges.IBentoBoxChallenge;
+import me.limeglass.sky.interfaces.challenges.BentoBoxChallenge;
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
-import me.limeglass.sky.interfaces.islands.IBentoBoxIsland;
+import me.limeglass.sky.interfaces.islands.BentoBoxIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.api.addons.Addon;
@@ -20,11 +20,11 @@ import world.bentobox.bentobox.database.objects.Island;
 import world.bentobox.bentobox.managers.RanksManager;
 import world.bentobox.challenges.ChallengesAddon;
 
-public class IBentoBox implements Skyblock {
+public class BentoBoxPlugin implements Skyblock {
 	
 	private BentoBox instance;
 	
-	public IBentoBox(BentoBox instance) {
+	public BentoBoxPlugin(BentoBox instance) {
 		this.instance = instance;
 	}
 	
@@ -32,7 +32,7 @@ public class IBentoBox implements Skyblock {
 	public Collection<SkyblockIsland> getTrustedOn(OfflinePlayer player) {
 		return instance.getIslandsManager().getIslands().parallelStream()
 				.filter(island -> island.getMemberSet(RanksManager.TRUSTED_RANK).contains(player.getUniqueId()))
-				.map(island -> new IBentoBoxIsland(island))
+				.map(island -> new BentoBoxIsland(island))
 				.collect(Collectors.toSet());
 	}
 
@@ -46,7 +46,7 @@ public class IBentoBox implements Skyblock {
 				.flatMap(world -> challenges.getChallengesManager().getAllChallengesNames(world).stream())
 				.map(challenge -> {
 					try {
-						return new IBentoBoxChallenge(challenge, player.getUniqueId());
+						return new BentoBoxChallenge(challenge, player.getUniqueId());
 					} catch (IllegalAccessException e) {
 						return null;
 					}
@@ -55,21 +55,21 @@ public class IBentoBox implements Skyblock {
 	}
 
 	@Override
-	public IBentoBoxIsland getIslandAt(Location location) {
+	public BentoBoxIsland getIslandAt(Location location) {
 		Optional<Island> island = instance.getIslandsManager().getIslandAt(location);
 		if (!island.isPresent())
 			return null;
-		return new IBentoBoxIsland(island.get());
+		return new BentoBoxIsland(island.get());
 	}
 
 	@Override
-	public IBentoBoxIsland getIslandOf(OfflinePlayer player) {
+	public BentoBoxIsland getIslandOf(OfflinePlayer player) {
 		Optional<Island> island = instance.getIslandsManager().getIslands().parallelStream()
 				.filter(i -> i.getOwner().equals(player.getUniqueId()))
 				.findFirst();
 		if (!island.isPresent())
 			return null;
-		return new IBentoBoxIsland(island.get());
+		return new BentoBoxIsland(island.get());
 	}
 
 	@Override

@@ -6,7 +6,7 @@ import ch.njol.skript.registrations.Classes;
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 
-public class StaticRegistration {
+public class DefaultClasses {
 
 	static {
 		Classes.registerClass(new ClassInfo<>(SkyblockChallenge.class, "challenge")
@@ -20,5 +20,5 @@ public class StaticRegistration {
 				.description("Represents a Skyblock island.")
 				.defaultExpression(new EventValueExpression<>(SkyblockIsland.class)));
 	}
-	
+
 }

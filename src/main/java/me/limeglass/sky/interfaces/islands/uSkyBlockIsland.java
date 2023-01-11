@@ -13,11 +13,11 @@ import org.bukkit.entity.Player;
 import ch.njol.skript.util.BiomeUtils;
 import us.talabrek.ultimateskyblock.api.IslandInfo;
 
-public class IuSkyBlockIsland implements SkyblockIsland {
+public class uSkyBlockIsland implements SkyblockIsland {
 
 	private IslandInfo island;
 	
-	public IuSkyBlockIsland(IslandInfo island) {
+	public uSkyBlockIsland(IslandInfo island) {
 		this.island = island;
 	}
 	

@@ -6,12 +6,12 @@ import org.bukkit.entity.Player;
 
 import us.talabrek.ultimateskyblock.api.ChallengeCompletion;
 
-public class IuSkyBlockChallenge implements SkyblockChallenge {
+public class uSkyBlockChallenge implements SkyblockChallenge {
 
 	private ChallengeCompletion challenge;
 	private Player player;
 	
-	public IuSkyBlockChallenge(ChallengeCompletion challenge, Player player) {
+	public uSkyBlockChallenge(ChallengeCompletion challenge, Player player) {
 		this.challenge = challenge;
 		this.player = player;
 	}

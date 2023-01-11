@@ -13,7 +13,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import me.limeglass.sky.Sky;
-import me.limeglass.sky.interfaces.islands.IuSkyBlockIsland;
+import me.limeglass.sky.interfaces.islands.uSkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
@@ -39,7 +39,7 @@ public class ExprIslandLog extends SimpleExpression<String> {
 	protected String[] get(Event e) {
 		Set<String> log = new HashSet<>();
 		for (SkyblockIsland island : islands.getArray(e))
-			log.addAll(((IuSkyBlockIsland)island).getIsland().getLog());
+			log.addAll(((uSkyBlockIsland)island).getIsland().getLog());
 		return log.toArray(new String[log.size()]);
 	}
 	

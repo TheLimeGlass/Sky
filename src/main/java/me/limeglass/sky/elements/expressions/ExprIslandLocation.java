@@ -11,7 +11,7 @@ import ch.njol.skript.doc.Name;
 import ch.njol.skript.expressions.base.SimplePropertyExpression;
 import ch.njol.util.coll.CollectionUtils;
 import me.limeglass.sky.Sky;
-import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
+import me.limeglass.sky.interfaces.islands.ASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
@@ -53,8 +53,8 @@ public class ExprIslandLocation extends SimplePropertyExpression<SkyblockIsland,
 		if (delta != null) {
 			Location location = (Location) delta[0];
 			for (SkyblockIsland island : getExpr().getArray(e)) {
-				if (island instanceof IASkyBlockIsland) {
-					((IASkyBlockIsland) island).setIslandLocation(location);
+				if (island instanceof ASkyBlockIsland) {
+					((ASkyBlockIsland) island).setIslandLocation(location);
 				}
 			}
 		}

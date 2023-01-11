@@ -11,7 +11,7 @@ import ch.njol.skript.doc.Name;
 import ch.njol.skript.expressions.base.SimplePropertyExpression;
 import ch.njol.util.coll.CollectionUtils;
 import me.limeglass.sky.Sky;
-import me.limeglass.sky.interfaces.islands.IASkyBlockIsland;
+import me.limeglass.sky.interfaces.islands.ASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
@@ -53,8 +53,8 @@ public class ExprIslandBiome extends SimplePropertyExpression<SkyblockIsland, Bi
 		if (delta != null) {
 			Biome biome = (Biome) delta[0];
 			for (SkyblockIsland island : getExpr().getArray(e)) {
-				if (island instanceof IASkyBlockIsland) {
-					((IASkyBlockIsland) island).getIsland().setBiome(biome);
+				if (island instanceof ASkyBlockIsland) {
+					((ASkyBlockIsland) island).getIsland().setBiome(biome);
 				}
 			}
 		}

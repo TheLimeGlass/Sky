@@ -11,13 +11,13 @@ import world.bentobox.bentobox.api.user.User;
 import world.bentobox.challenges.ChallengesAddon;
 import world.bentobox.challenges.managers.ChallengesManager;
 
-public class IBentoBoxChallenge implements SkyblockChallenge {
+public class BentoBoxChallenge implements SkyblockChallenge {
 
 	private ChallengesManager challenges;
 	private final String challenge;
 	private final UUID uuid;
 
-	public IBentoBoxChallenge(String challenge, UUID uuid) throws IllegalAccessException {
+	public BentoBoxChallenge(String challenge, UUID uuid) throws IllegalAccessException {
 		this.challenge = challenge;
 		this.uuid = uuid;
 		Optional<Addon> addon = BentoBox.getInstance().getAddonsManager().getAddonByName("Challenges");

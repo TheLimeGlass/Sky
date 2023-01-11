@@ -16,7 +16,7 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.PlayerResolver;
-import me.limeglass.sky.interfaces.islands.IuSkyBlockIsland;
+import me.limeglass.sky.interfaces.islands.uSkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
@@ -42,7 +42,7 @@ public class ExprIslandBanned extends SimpleExpression<OfflinePlayer> implements
 	protected OfflinePlayer[] get(Event e) {
 		Set<OfflinePlayer> members = new HashSet<>();
 		for (SkyblockIsland island : islands.getArray(e)) {
-			List<String> bans = ((IuSkyBlockIsland) island).getIsland().getBans();
+			List<String> bans = ((uSkyBlockIsland) island).getIsland().getBans();
 			for (OfflinePlayer player : resolveOffline(bans.toArray(new String[bans.size()])))
 				members.add(player);
 		}

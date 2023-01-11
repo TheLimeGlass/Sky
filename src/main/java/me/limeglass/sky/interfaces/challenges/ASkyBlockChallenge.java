@@ -2,13 +2,13 @@ package me.limeglass.sky.interfaces.challenges;
 
 import java.util.UUID;
 
-public class IASkyBlockChallenge implements SkyblockChallenge {
+public class ASkyBlockChallenge implements SkyblockChallenge {
 
 	private String challenge;
 	private int completions;
 	private UUID owner;
 	
-	public IASkyBlockChallenge(String challenge, int completions, UUID owner) {
+	public ASkyBlockChallenge(String challenge, int completions, UUID owner) {
 		this.completions = completions;
 		this.challenge = challenge;
 		this.owner = owner;

@@ -10,17 +10,17 @@ import org.bukkit.entity.Player;
 
 import com.google.common.collect.Sets;
 
-import me.limeglass.sky.interfaces.challenges.IuSkyBlockChallenge;
+import me.limeglass.sky.interfaces.challenges.uSkyBlockChallenge;
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
-import me.limeglass.sky.interfaces.islands.IuSkyBlockIsland;
+import me.limeglass.sky.interfaces.islands.uSkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 import us.talabrek.ultimateskyblock.api.uSkyBlockAPI;
 
-public class IuSkyBlock implements Skyblock {
+public class uSkyBlock implements Skyblock {
 	
 	private uSkyBlockAPI instance;
 	
-	public IuSkyBlock(uSkyBlockAPI instance) {
+	public uSkyBlock(uSkyBlockAPI instance) {
 		this.instance = instance;
 	}
 	
@@ -37,18 +37,18 @@ public class IuSkyBlock implements Skyblock {
 	@Override
 	public Set<SkyblockChallenge> getChallenges(Player player) {
 		return instance.getPlayerInfo(player).getChallenges().parallelStream()
-				.map(challenge -> new IuSkyBlockChallenge(challenge, player))
+				.map(challenge -> new uSkyBlockChallenge(challenge, player))
 				.collect(Collectors.toSet());
 	}
 	
 	@Override
 	public SkyblockIsland getIslandAt(Location location) {
-		return new IuSkyBlockIsland(instance.getIslandInfo(location));
+		return new uSkyBlockIsland(instance.getIslandInfo(location));
 	}
 	
 	@Override
 	public SkyblockIsland getIslandOf(OfflinePlayer player) {
-		return new IuSkyBlockIsland(instance.getIslandInfo(player.getPlayer()));
+		return new uSkyBlockIsland(instance.getIslandInfo(player.getPlayer()));
 	}
 	
 	@Override

@@ -10,33 +10,32 @@ import com.wasteofplastic.askyblock.ASkyBlockAPI;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
-import me.limeglass.sky.interfaces.skyblocks.IASkyBlock;
-import me.limeglass.sky.interfaces.skyblocks.IBentoBox;
-import me.limeglass.sky.interfaces.skyblocks.IuSkyBlock;
+import me.limeglass.sky.interfaces.skyblocks.ASkyBlock;
+import me.limeglass.sky.interfaces.skyblocks.BentoBoxPlugin;
+import me.limeglass.sky.interfaces.skyblocks.uSkyBlock;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock;
 import us.talabrek.ultimateskyblock.api.uSkyBlockAPI;
 import world.bentobox.bentobox.BentoBox;
 
 public class Sky extends JavaPlugin {
-	
-	private String packageName = "me.limeglass.sky";
+
 	private static Skyblock skyblock;
 	private static Sky instance;
 	private SkriptAddon addon;
-	
-	public void onEnable(){
+
+	public void onEnable() {
 		instance = this;
 		Plugin plugin = Bukkit.getPluginManager().getPlugin("uSkyBlock");
 		if (plugin != null && plugin.isEnabled()) {
-			skyblock = new IuSkyBlock((uSkyBlockAPI) plugin);
+			skyblock = new uSkyBlock((uSkyBlockAPI) plugin);
 		} else {
 			plugin = Bukkit.getPluginManager().getPlugin("ASkyBlock");
 			if (plugin != null && plugin.isEnabled()) {
-				skyblock = new IASkyBlock(ASkyBlockAPI.getInstance());
+				skyblock = new ASkyBlock(ASkyBlockAPI.getInstance());
 			} else {
 				plugin = Bukkit.getPluginManager().getPlugin("BentoBox");
 				if (plugin != null && plugin.isEnabled()) {
-					skyblock = new IBentoBox(BentoBox.getInstance());
+					skyblock = new BentoBoxPlugin(BentoBox.getInstance());
 				}
 			}
 		}
@@ -46,27 +45,23 @@ public class Sky extends JavaPlugin {
 			return;
 		}
 		try {
-			addon = Skript.registerAddon(this).loadClasses(packageName, "elements");
+			addon = Skript.registerAddon(this).loadClasses("me.limeglass.sky", "elements");
 		} catch (IOException e) {
 			Skript.exception(e, "Could not load Sky's syntax elements");
 		}
 		getLogger().info("has been enabled!");
 	}
 
-	public static Skyblock getSkyblock() {
-		return skyblock;
-	}
-	
 	public SkriptAddon getAddonInstance() {
 		return addon;
 	}
-	
+
+	public static Skyblock getSkyblock() {
+		return skyblock;
+	}
+
 	public static Sky getInstance() {
 		return instance;
-	}
-	
-	public String getPackageName() {
-		return packageName;
 	}
 
 }

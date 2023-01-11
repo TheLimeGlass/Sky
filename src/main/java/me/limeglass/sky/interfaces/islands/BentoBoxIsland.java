@@ -13,14 +13,14 @@ import org.bukkit.entity.Player;
 
 import world.bentobox.bentobox.database.objects.Island;
 
-public class IBentoBoxIsland implements SkyblockIsland {
+public class BentoBoxIsland implements SkyblockIsland {
 
 	private Island island;
-	
-	public IBentoBoxIsland(Island island) {
+
+	public BentoBoxIsland(Island island) {
 		this.island = island;
 	}
-	
+
 	public Island getIsland() {
 		return island;
 	}
@@ -86,5 +86,5 @@ public class IBentoBoxIsland implements SkyblockIsland {
 	public long getLevel() {
 		return 0;
 	}
-	
+
 }
