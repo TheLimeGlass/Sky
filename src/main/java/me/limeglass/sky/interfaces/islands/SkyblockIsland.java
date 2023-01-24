@@ -58,5 +58,12 @@ public interface SkyblockIsland {
 	 * @return The level of the island
 	 */
 	long getLevel();
+
+	/**
+	 * Sets the level of the island.
+	 * 
+	 * @param level the new level.
+	 */
+	void setLevel(long level);
 	
 }

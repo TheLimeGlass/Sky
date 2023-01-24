@@ -88,5 +88,10 @@ public class ASkyBlockIsland implements SkyblockIsland {
 	public long getLevel() {
 		return ((ASkyBlockAPI)Sky.getSkyblock().getInstance()).getLongIslandLevel(getLeader().getUniqueId());
 	}
-	
+
+	@Override
+	public void setLevel(long level) {
+		((ASkyBlockAPI)Sky.getSkyblock().getInstance()).setIslandLevel(getLeader().getUniqueId(), (int) level);
+	}
+
 }

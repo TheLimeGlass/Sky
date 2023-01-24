@@ -1,6 +1,8 @@
 package me.limeglass.sky.interfaces.skyblocks;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -42,7 +44,7 @@ public class BentoBoxPlugin implements Skyblock {
 	public Set<SkyblockChallenge> getChallenges(Player player) {
 		Optional<Addon> addon = instance.getAddonsManager().getAddonByName("Challenges");
 		if (!addon.isPresent())
-			return null;
+			return new HashSet<>();
 		ChallengesAddon challenges = (ChallengesAddon) addon.get();
 		return Bukkit.getWorlds().stream()
 				.flatMap(world -> challenges.getChallengesManager().getAllChallengesNames(world).stream())
@@ -53,6 +55,7 @@ public class BentoBoxPlugin implements Skyblock {
 						return null;
 					}
 				})
+				.filter(Objects::nonNull)
 				.collect(Collectors.toSet());
 	}
 

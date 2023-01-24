@@ -1,5 +1,6 @@
 package me.limeglass.sky.interfaces.islands;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -11,7 +12,9 @@ import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 
+import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.database.objects.Island;
+import world.bentobox.level.Level;
 
 public class BentoBoxIsland implements SkyblockIsland {
 
@@ -84,7 +87,18 @@ public class BentoBoxIsland implements SkyblockIsland {
 
 	@Override
 	public long getLevel() {
-		return 0;
+		Optional<Level> optional = BentoBox.getInstance().getAddonsManager().getAddonByName("Level").map(Level.class::cast);
+		if (!optional.isPresent())
+			return -1;
+		return optional.get().getInitialIslandLevel(island);
+	}
+
+	@Override
+	public void setLevel(long level) {
+		Optional<Level> optional = BentoBox.getInstance().getAddonsManager().getAddonByName("Level").map(Level.class::cast);
+		if (!optional.isPresent())
+			return;
+		optional.get().setInitialIslandLevel(island, level);
 	}
 
 }

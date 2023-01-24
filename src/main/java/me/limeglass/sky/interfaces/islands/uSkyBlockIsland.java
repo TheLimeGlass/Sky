@@ -81,5 +81,10 @@ public class uSkyBlockIsland implements SkyblockIsland {
 	public long getLevel() {
 		return (long) island.getLevel();
 	}
+
+	@Override
+	public void setLevel(long level) {
+		throw new UnsupportedOperationException();
+	}
 	
 }
