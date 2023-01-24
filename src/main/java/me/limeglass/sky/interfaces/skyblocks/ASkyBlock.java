@@ -1,5 +1,6 @@
 package me.limeglass.sky.interfaces.skyblocks;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -8,6 +9,7 @@ import java.util.stream.Collectors;
 
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import com.google.common.collect.Sets;
@@ -19,20 +21,20 @@ import me.limeglass.sky.interfaces.islands.ASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 
 public class ASkyBlock implements Skyblock {
-	
+
 	private ASkyBlockAPI instance;
-	
+
 	public ASkyBlock(ASkyBlockAPI instance) {
 		this.instance = instance;
 	}
-	
+
 	@Override
 	public Set<SkyblockIsland> getTrustedOn(OfflinePlayer player) {
 		return instance.getCoopIslands(player.getPlayer()).parallelStream()
 				.map(location -> getIslandAt(location))
 				.collect(Collectors.toSet());
 	}
-	
+
 	@Override
 	public Set<SkyblockChallenge> getChallenges(Player player) {
 		UUID uuid = player.getUniqueId();
@@ -47,22 +49,34 @@ public class ASkyBlock implements Skyblock {
 		}
 		return challenges;
 	}
-	
+
+	@Override
+	public Collection<SkyblockIsland> getIslandsOf(World world) {
+		return instance.getOwnedIslands().values().stream()
+				.map(island -> new ASkyBlockIsland(island))
+				.collect(Collectors.toList());
+	}
+
 	@Override
 	public SkyblockIsland getIslandAt(Location location) {
 		return new ASkyBlockIsland(instance.getIslandAt(location));
 	}
-	
+
 	@Override
 	public SkyblockIsland getIslandOf(OfflinePlayer player) {
 		return new ASkyBlockIsland(instance.getIslandOwnedBy(player.getUniqueId()));
 	}
-	
+
+	@Override
+	public SkyblockIsland getIslandOf(World world, OfflinePlayer player) {
+		return getIslandOf(player);
+	}
+
 	@Override
 	public Set<Location> getHomeLocations(OfflinePlayer player) {
 		return Sets.newHashSet(instance.getHomeLocation(player.getUniqueId()));
 	}
-	
+
 	@Override
 	public SkyblockPlugin getPluginType() {
 		return SkyblockPlugin.ASKYBLOCK;
@@ -72,5 +86,5 @@ public class ASkyBlock implements Skyblock {
 	public ASkyBlockAPI getInstance() {
 		return instance;
 	}
-	
+
 }

@@ -4,7 +4,9 @@ import java.util.Collection;
 
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.eclipse.jdt.annotation.Nullable;
 
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
@@ -40,6 +42,7 @@ public interface Skyblock {
 	 * @return The island if one was found.
 	 */
 	SkyblockIsland getIslandOf(OfflinePlayer player);
+	SkyblockIsland getIslandOf(@Nullable World world, OfflinePlayer player);
 	
 	/**
 	 * @param player The player to get the home location from.
@@ -51,6 +54,14 @@ public interface Skyblock {
 	 * @return Which Skyblock plugin is being ran.
 	 */
 	SkyblockPlugin getPluginType();
+
+	/**
+	 * Returns all the islands of the defined world.
+	 * 
+	 * @param world the world to search in.
+	 * @return collection of all the islands.
+	 */
+	Collection<SkyblockIsland> getIslandsOf(World world);
 	
 	/**
 	 * @return The static implementation class used by the Skyblock plugin.

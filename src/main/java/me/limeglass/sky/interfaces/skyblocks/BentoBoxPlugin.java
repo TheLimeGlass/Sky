@@ -8,7 +8,9 @@ import java.util.stream.Collectors;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.eclipse.jdt.annotation.Nullable;
 
 import me.limeglass.sky.interfaces.challenges.BentoBoxChallenge;
 import me.limeglass.sky.interfaces.challenges.SkyblockChallenge;
@@ -55,6 +57,13 @@ public class BentoBoxPlugin implements Skyblock {
 	}
 
 	@Override
+	public Collection<SkyblockIsland> getIslandsOf(World world) {
+		return instance.getIslandsManager().getIslands(world).stream()
+				.map(island -> new BentoBoxIsland(island))
+				.collect(Collectors.toList());
+	}
+
+	@Override
 	public BentoBoxIsland getIslandAt(Location location) {
 		Optional<Island> island = instance.getIslandsManager().getIslandAt(location);
 		if (!island.isPresent())
@@ -64,12 +73,23 @@ public class BentoBoxPlugin implements Skyblock {
 
 	@Override
 	public BentoBoxIsland getIslandOf(OfflinePlayer player) {
-		Optional<Island> island = instance.getIslandsManager().getIslands().parallelStream()
+		Collection<Island> islands = instance.getIslandsManager().getIslands();
+		Optional<Island> island = islands.parallelStream()
 				.filter(i -> i.getOwner().equals(player.getUniqueId()))
 				.findFirst();
 		if (!island.isPresent())
 			return null;
 		return new BentoBoxIsland(island.get());
+	}
+
+	@Override
+	public BentoBoxIsland getIslandOf(@Nullable World world, OfflinePlayer player) {
+		if (world == null)
+			return getIslandOf(player);
+		Island island = instance.getIslandsManager().getIsland(world, player.getUniqueId());
+		if (island == null)
+			return null;
+		return new BentoBoxIsland(island);
 	}
 
 	@Override

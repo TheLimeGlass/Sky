@@ -1,12 +1,15 @@
 package me.limeglass.sky.interfaces.skyblocks;
 
+import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.eclipse.jdt.annotation.Nullable;
 
 import com.google.common.collect.Sets;
 
@@ -40,6 +43,11 @@ public class uSkyBlock implements Skyblock {
 				.map(challenge -> new uSkyBlockChallenge(challenge, player))
 				.collect(Collectors.toSet());
 	}
+
+	@Override
+	public Collection<SkyblockIsland> getIslandsOf(World world) {
+		return null;
+	}
 	
 	@Override
 	public SkyblockIsland getIslandAt(Location location) {
@@ -49,6 +57,11 @@ public class uSkyBlock implements Skyblock {
 	@Override
 	public SkyblockIsland getIslandOf(OfflinePlayer player) {
 		return new uSkyBlockIsland(instance.getIslandInfo(player.getPlayer()));
+	}
+
+	@Override
+	public SkyblockIsland getIslandOf(@Nullable World world, OfflinePlayer player) {
+		return getIslandOf(player);
 	}
 	
 	@Override
