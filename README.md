@@ -1,5 +1,6 @@
 # Sky
 A Skript addon dedicated to Skyblock.
+https://forums.skunity.com/resources/sky.990/
 
 ## Supported Skyblock plugins:
 - uSkyBlock 2.11.0
