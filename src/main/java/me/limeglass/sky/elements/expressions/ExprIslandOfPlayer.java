@@ -32,6 +32,7 @@ public class ExprIslandOfPlayer extends PropertyExpression<OfflinePlayer, Skyblo
 		);
 	}
 
+	@Nullable
 	private Expression<World> world;
 
 	@Override
@@ -50,6 +51,10 @@ public class ExprIslandOfPlayer extends PropertyExpression<OfflinePlayer, Skyblo
 	@Override
 	protected SkyblockIsland[] get(Event event, OfflinePlayer[] source) {
 		Skyblock skyblock = Sky.getSkyblock();
+		if (world == null)
+			return get(source, player -> {
+				return skyblock.getIslandOf(player);
+			});
 		World world = this.world.getSingle(event);
 		return get(source, player -> {
 			return skyblock.getIslandOf(world, player);
