@@ -46,7 +46,7 @@ dependencies {
 	}
 
 	// uSkyBlock
-	implementation (group: 'com.github.rlf', name: 'uSkyBlock-API', version: '3.0.0-SNAPSHOT')
+	implementation (group: 'com.github.rlf', name: 'uSkyBlock-API', version: '3.1.0-SNAPSHOT')
 
 	// BentoBox
 	implementation (group: 'world.bentobox', name: 'bentobox', version: '1.22.0-SNAPSHOT')
