@@ -51,7 +51,7 @@ dependencies {
 	// BentoBox
 	implementation (group: 'world.bentobox', name: 'bentobox', version: '1.22.0-SNAPSHOT')
 	implementation (group: 'world.bentobox', name: 'challenges', version: '1.2.0-SNAPSHOT')
-	implementation (group: 'world.bentobox', name: 'level', version: '2.9.1-SNAPSHOT')
+	implementation (group: 'world.bentobox', name: 'level', version: '2.10.1-SNAPSHOT')
 
 	implementation fileTree(dir: 'lib', include: '*.jar')
 
