@@ -1,6 +1,8 @@
 import org.apache.tools.ant.filters.ReplaceTokens
-apply plugin: 'java-library'
-apply plugin: 'eclipse'
+plugins {
+	id 'com.github.johnrengelman.shadow' version '8.1.1'
+	id 'java'
+}
 
 repositories {
 	mavenCentral()
@@ -49,7 +51,7 @@ dependencies {
 	implementation (group: 'com.github.rlf', name: 'uSkyBlock-API', version: '3.0.0-SNAPSHOT')
 
 	// BentoBox
-	implementation (group: 'world.bentobox', name: 'bentobox', version: '1.22.0-SNAPSHOT')
+	implementation (group: 'world.bentobox', name: 'bentobox', version: '2.7.0')
 	implementation (group: 'world.bentobox', name: 'challenges', version: '1.2.0-SNAPSHOT')
 	implementation (group: 'world.bentobox', name: 'level', version: '2.9.1-SNAPSHOT')
 
