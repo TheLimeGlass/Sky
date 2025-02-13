@@ -1,4 +1,4 @@
-package me.limeglass.sky.elements.bentobox.effects;
+package me.limeglass.sky.elements.bentobox.expressions;
 
 import java.io.IOException;
 
@@ -21,6 +21,7 @@ import me.limeglass.sky.Sky;
 import me.limeglass.sky.interfaces.islands.BentoBoxIsland;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 import world.bentobox.bentobox.BentoBox;
+import world.bentobox.bentobox.api.addons.GameModeAddon;
 import world.bentobox.bentobox.api.events.island.IslandEvent.Reason;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.objects.Island;
@@ -41,11 +42,13 @@ import world.bentobox.bentobox.managers.island.NewIsland.Builder;
 public class ExprCreateIsland extends SimpleExpression<BentoBoxIsland> {
 
 	static {
-		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.BENTOBOX)
+		if (Sky.getSkyblock().getPluginType() == SkyblockPlugin.BENTOBOX) {
+			System.out.println("BentoBox syntax loaded!");
 			Skript.registerExpression(ExprCreateIsland.class, BentoBoxIsland.class, ExpressionType.SIMPLE,
 					"[a] new island for %offlineplayer% [with blueprint %-string%]",
 					"[a] new island at %location% [for %-offlineplayer%]"
 			);
+		}
 	}
 
 	@Nullable private Expression<Location> location;
@@ -56,11 +59,11 @@ public class ExprCreateIsland extends SimpleExpression<BentoBoxIsland> {
 	@SuppressWarnings("unchecked")
 	public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult) {
 		if (matchedPattern == 0) {
-			object = exprs[1];
-			blueprint = (Expression<String>) exprs[2];
+			object = exprs[0];
+			blueprint = (Expression<String>) exprs[1];
 		} else if (matchedPattern == 1) {
 			location = (Expression<Location>) exprs[0];
-			object = exprs[0];
+			object = exprs[1];
 		}
 		return true;
 	}
@@ -83,15 +86,21 @@ public class ExprCreateIsland extends SimpleExpression<BentoBoxIsland> {
 		}
 		Builder builder = NewIsland.builder();
 		builder.reason(Reason.CREATE);
-		if (object instanceof OfflinePlayer offlineplayer) {
-			User user = bento.getPlayers().getUser(offlineplayer.getUniqueId());
+		if (object.getSingle(event) instanceof OfflinePlayer offlineplayer) {
+			User user = bento.getPlayersManager().getUser(offlineplayer.getUniqueId());
 			builder.player(user);
 		}
 		if (blueprint != null)
 			builder.name(blueprint.getSingle(event));
 		try {
+			GameModeAddon gamemode = bento.getAddonsManager().getGameModeAddons().stream()
+				.filter(addon -> addon.getDescription().getName().equalsIgnoreCase("BSkyBlock"))
+				.findFirst()
+				.orElseGet(() -> bento.getAddonsManager().getGameModeAddons().get(0));
+			builder.addon(gamemode);
 			return new BentoBoxIsland[] {new BentoBoxIsland(builder.build())};
 		} catch (IOException e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
