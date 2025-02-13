@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Registry;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 
-import ch.njol.skript.util.BiomeUtils;
 import us.talabrek.ultimateskyblock.api.IslandInfo;
 
 public class uSkyBlockIsland implements SkyblockIsland {
@@ -74,7 +74,7 @@ public class uSkyBlockIsland implements SkyblockIsland {
 
 	@Override
 	public Biome getBiome() {
-		return BiomeUtils.parse(island.getBiome());
+		return Biome.valueOf(island.getBiome().toUpperCase().replace(" ", "_"));
 	}
 
 	@Override

@@ -63,9 +63,9 @@ public class ExprIslandCreationDate extends SimplePropertyExpression<SkyblockIsl
 			if (island == null)
 				continue;
 			if (island instanceof ASkyBlockIsland)
-				((ASkyBlockIsland) island).getIsland().setCreatedDate(date.getTimestamp());
+				((ASkyBlockIsland) island).getIsland().setCreatedDate(date.getTime());
 			else if (island instanceof BentoBoxIsland)
-				((BentoBoxIsland) island).getIsland().setCreatedDate(date.getTimestamp());
+				((BentoBoxIsland) island).getIsland().setCreatedDate(date.getTime());
 		}
 	}
 

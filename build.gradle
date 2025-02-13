@@ -40,10 +40,10 @@ dependencies {
 	implementation (group: 'org.eclipse.jdt', name: 'org.eclipse.jdt.annotation', version: '2.2.700')
 
 	// Spigot/Bukkit
-	implementation (group: 'org.spigotmc', name: 'spigot-api', version: '1.19.3-R0.1-SNAPSHOT')
+	implementation (group: 'org.spigotmc', name: 'spigot-api', version: '1.21.4-R0.1-SNAPSHOT')
 
 	// Skript
-	implementation (group: 'com.github.SkriptLang', name: 'Skript', version: '2.6.3') {
+	implementation (group: 'com.github.SkriptLang', name: 'Skript', version: '2.10.1') {
 		transitive = false
 	}
 
@@ -51,7 +51,7 @@ dependencies {
 	implementation (group: 'com.github.rlf', name: 'uSkyBlock-API', version: '3.0.0-SNAPSHOT')
 
 	// BentoBox
-	implementation (group: 'world.bentobox', name: 'bentobox', version: '2.7.0')
+	implementation (group: 'world.bentobox', name: 'bentobox', version: '2.7.0-SNAPSHOT')
 	implementation (group: 'world.bentobox', name: 'challenges', version: '1.2.0-SNAPSHOT')
 	implementation (group: 'world.bentobox', name: 'level', version: '2.9.1-SNAPSHOT')
 
