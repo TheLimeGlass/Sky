@@ -52,6 +52,7 @@ dependencies {
 
 	// BentoBox
 	implementation (group: 'world.bentobox', name: 'bentobox', version: '2.7.0-SNAPSHOT')
+	implementation (group: 'world.bentobox', name: 'bskyblock', version: '1.9.0-SNAPSHOT')
 	implementation (group: 'world.bentobox', name: 'challenges', version: '1.3.2-SNAPSHOT')
 	implementation (group: 'world.bentobox', name: 'level', version: '2.17.0-SNAPSHOT')
 
