@@ -98,6 +98,11 @@ public class ExprCreateIsland extends SimpleExpression<BentoBoxIsland> {
 				.findFirst()
 				.orElseGet(() -> bento.getAddonsManager().getGameModeAddons().get(0));
 			builder.addon(gamemode);
+		} catch (Exception e) {
+			Skript.error("No BentoBox game mode addon found!");
+			return null;
+		}
+		try {
 			return new BentoBoxIsland[] {new BentoBoxIsland(builder.build())};
 		} catch (IOException e) {
 			e.printStackTrace();

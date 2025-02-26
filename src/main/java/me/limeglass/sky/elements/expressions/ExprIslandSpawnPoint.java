@@ -15,31 +15,31 @@ import me.limeglass.sky.interfaces.islands.ASkyBlockIsland;
 import me.limeglass.sky.interfaces.islands.SkyblockIsland;
 import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 
-@Name("Island Spawnpoint")
+@Name("Island Spawn")
 @Description("Returns the spawnpoints of the islands.")
 @Examples("teleport player to spawn point of player's island")
 public class ExprIslandSpawnPoint extends SimplePropertyExpression<SkyblockIsland, Location> {
 
 	static {
-		register(ExprIslandSpawnPoint.class, Location.class, "[island] (spawn|warp)[ ]point", "islands");
+		register(ExprIslandSpawnPoint.class, Location.class, "island spawn [point]", "islands");
 	}
-	
+
 	@Override
 	@Nullable
 	public Location convert(SkyblockIsland island) {
 		return island.getSpawnPoint();
 	}
-	
+
 	@Override
 	public Class<? extends Location> getReturnType() {
 		return Location.class;
 	}
-	
+
 	@Override
 	protected String getPropertyName() {
-		return "island spawn point";
+		return "island spawn";
 	}
-	
+
 	@Override
 	@Nullable
 	public Class<?>[] acceptChange(ChangeMode mode) {
@@ -47,7 +47,7 @@ public class ExprIslandSpawnPoint extends SimplePropertyExpression<SkyblockIslan
 			return CollectionUtils.array(Location.class);
 		return null;
 	}
-	
+
 	@Override
 	public void change(Event e, @Nullable Object[] delta, ChangeMode mode) {
 		if (delta != null) {
@@ -59,5 +59,5 @@ public class ExprIslandSpawnPoint extends SimplePropertyExpression<SkyblockIslan
 			}
 		}
 	}
-	
+
 }

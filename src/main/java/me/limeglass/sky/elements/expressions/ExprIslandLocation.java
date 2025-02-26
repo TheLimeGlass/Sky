@@ -21,7 +21,7 @@ import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 public class ExprIslandLocation extends SimplePropertyExpression<SkyblockIsland, Location> {
 
 	static {
-		register(ExprIslandLocation.class, Location.class, "[island] (center [location]|location)", "islands");
+		register(ExprIslandLocation.class, Location.class, "island (center [location]|location)", "islands");
 	}
 	
 	@Override

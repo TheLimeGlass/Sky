@@ -47,6 +47,11 @@ public class ExprIslands extends PropertyExpression<World, SkyblockIsland> {
 	}
 
 	@Override
+	public boolean isSingle() {
+		return false;
+	}
+
+	@Override
 	public Class<? extends SkyblockIsland> getReturnType() {
 		return SkyblockIsland.class;
 	}

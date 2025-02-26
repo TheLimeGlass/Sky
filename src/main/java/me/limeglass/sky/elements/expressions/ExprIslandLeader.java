@@ -19,25 +19,25 @@ import me.limeglass.sky.interfaces.skyblocks.Skyblock.SkyblockPlugin;
 public class ExprIslandLeader extends SimplePropertyExpression<SkyblockIsland, OfflinePlayer> {
 
 	static {
-		register(ExprIslandLeader.class, OfflinePlayer.class, "[island] (owner|leader)", "islands");
+		register(ExprIslandLeader.class, OfflinePlayer.class, "island (owner|leader)", "islands");
 	}
-	
+
 	@Override
 	@Nullable
 	public OfflinePlayer convert(SkyblockIsland island) {
 		return island.getLeader();
 	}
-	
+
 	@Override
 	public Class<? extends OfflinePlayer> getReturnType() {
 		return OfflinePlayer.class;
 	}
-	
+
 	@Override
 	protected String getPropertyName() {
 		return "island leader";
 	}
-	
+
 	@Override
 	@Nullable
 	public Class<?>[] acceptChange(ChangeMode mode) {
@@ -45,7 +45,7 @@ public class ExprIslandLeader extends SimplePropertyExpression<SkyblockIsland, O
 			return CollectionUtils.array(OfflinePlayer.class);
 		return null;
 	}
-	
+
 	@Override
 	public void change(Event e, @Nullable Object[] delta, ChangeMode mode) {
 		if (delta != null) {
@@ -57,5 +57,5 @@ public class ExprIslandLeader extends SimplePropertyExpression<SkyblockIsland, O
 			}
 		}
 	}
-	
+
 }

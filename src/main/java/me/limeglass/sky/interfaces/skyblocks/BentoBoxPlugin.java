@@ -78,7 +78,11 @@ public class BentoBoxPlugin implements Skyblock {
 	public BentoBoxIsland getIslandOf(OfflinePlayer player) {
 		Collection<Island> islands = instance.getIslandsManager().getIslands();
 		Optional<Island> island = islands.parallelStream()
-				.filter(i -> i.getOwner().equals(player.getUniqueId()) || i.getMemberSet().contains(player.getUniqueId()))
+				.filter(i -> {
+					if (i.getOwner() != null && i.getOwner().equals(player.getUniqueId()))
+						return true;
+					return i.getMemberSet().contains(player.getUniqueId());
+				})
 				.findFirst();
 		if (!island.isPresent())
 			return null;
